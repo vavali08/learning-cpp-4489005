@@ -7,8 +7,15 @@
 
 int main(){
     std::string str;
+
+    // std::flush ensures output is sent to terminal before user can enter input
+    std::cout << "Enter your name: " << std::flush;
+
+    // User input stored in str - only works for single words
     std::cin >> str;
-    std::cout << str;
+
+    // prints back str to console
+    std::cout << "Hello, " << str << std::endl;
 
     std::cout << std::endl << std::endl;
     return (0);
