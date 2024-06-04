@@ -27,8 +27,43 @@ int main(){
     // Calculate the GPA for the selected student.
     // Write your code here
 
+    float total_points = 0;
+    int total_credits = 0;
+    int course_credits;
+    int grade_num;
+
+    for (Grade grade : grades) {
+    // Instead use for (Grade& grd : grades) to only copy address, not the entire grade. References to objects use thesame syntax as the objects themselves
+        if (grade.get_student_id() == id) {
+            course_credits = courses[grade.get_course_id() - 1].get_credits();
+
+            switch(grade.get_grade()) {
+                case 'A': 
+                    grade_num = 4;
+                    break;
+                case 'B': 
+                    grade_num = 3;
+                    break;
+                case 'C': 
+                    grade_num = 2;
+                    break;
+                case 'D': 
+                    grade_num = 1;
+                    break;
+                case 'F': 
+                    grade_num = 0;
+                    break;
+            }
+            total_credits += course_credits;
+            total_points += course_credits * grade_num;
+                    
+        }
+    }
+
+    GPA = total_points / total_credits;
+
     std::string student_str;
-    student_str = students[0].get_name(); // Change this to the selected student's name
+    student_str = students[id - 1].get_name(); // Change this to the selected student's name
 
     std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
     
